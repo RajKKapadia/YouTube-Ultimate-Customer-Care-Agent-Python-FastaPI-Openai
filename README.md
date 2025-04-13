@@ -48,10 +48,10 @@ Start the server with:
 python run.py
 ```
 
-Or use Uvicorn directly:
+Render server start command:
 
 ```
-uvicorn src.main:app --reload --port 5000
+uvicorn src.main:app --host 0.0.0.0 --port $PORT
 ```
 
 ## API Endpoints

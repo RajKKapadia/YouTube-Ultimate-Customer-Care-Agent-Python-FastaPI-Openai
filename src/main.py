@@ -4,6 +4,7 @@ from fastapi import FastAPI, HTTPException, Request, Response, status, Backgroun
 
 from src import logging
 from src.utils import process_message
+from src import config
 
 app = FastAPI()
 
@@ -28,7 +29,7 @@ async def verify_webhook(request: Request):
     logger.info(mode, token, challenge)
 
     if mode and token:
-        if mode == "subscribe" and token == "abcdefgh12345678":
+        if mode == "subscribe" and token == config.VERIFY_TOKEN:
             logger.info("Webhook verified successfully")
             return Response(content=challenge, media_type="text/plain")
         else:
